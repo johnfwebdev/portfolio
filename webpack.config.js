@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: "./src/Index.js",
@@ -34,7 +35,10 @@ module.exports = {
     publicPath: "http://testsite.test/",
     hotOnly: true
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin()
+  ],
   optimization: {
     minimizer: [new UglifyJsPlugin()],
   }
