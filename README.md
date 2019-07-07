@@ -8,7 +8,7 @@ This project is to show of some of the lessons from setting up a proper environm
 ## File/Folder Structure
 ___/public___ - Is for building purposes and home of index.html  
   ___- public/assets___ - Primary assets folder publically served when deployed  
-    ___- public/assets/img - primary images folder  
+    ___- public/assets/img___ - primary images folder  
   ___- index.html___ - Output location for the App.js file to bind to the DOM  
 ___/src___ - Home to core code  
   ___- src/components___ - React components  
