@@ -1,4 +1,4 @@
-# To Be Named  
+# Portfolio - Single Page Application  
 A portfolio project with React, Webpack, Docker, and other things.  
 
 Description
@@ -7,10 +7,14 @@ This project is to show of some of the lessons from setting up a proper environm
 
 ## File/Folder Structure
 ___/public___ - Is for building purposes and home of index.html  
+  ___- public/assets___ - Primary assets folder publically served when deployed  
+    ___- public/assets/img - primary images folder  
+  ___- index.html___ - Output location for the App.js file to bind to the DOM  
 ___/src___ - Home to core code  
- ___- src/components___ - React components  
- ___- src/css___ - CSS  
- ___- src/index.js___ - React app and Webpack Entry Point  
+  ___- src/components___ - React components  
+  ___- src/css___ - CSS  
+  ___- src/index.js___ - React app and Webpack Entry Point  
+___.dockerignore___  
 ___.gitignore___  
 ___.babelrc___ - Babel presets for ES6  
 ___package.json___ - npm scripts for start and dev scripts, and dependencies  
@@ -24,8 +28,11 @@ ___webpack.prod.___ - Production bundling rules
 ***npm run dev***  
  - this will launch the Webpack dev server with to localhost 3000  
  - the dev server has hot modules enabled and editing anything in /src will result in the page refreshing  
-***npm run dev --*** ___<hostname>___  
- - including a <hostname> will launch the Webpack dev server with the desired hostname in the browser  
+
+***npm run dev -- --host [hostname]***  
+ - including a [hostname] will launch the Webpack dev server with the desired hostname in the browser  
+ - Syntax: `npm run dev -- --host example.test`
+
 ***npm start***  
  - this will build using webpack and the bundle.js file will be in /public/dist
  - built from /src directory  
@@ -35,5 +42,11 @@ ___webpack.prod.___ - Production bundling rules
 ### Intial Commits  
 Revolve around essential setup and functionality, npm, react, docker, webpack, etc.  
 
-### Newest Commits  
+### Newest Changes  
+***July 6, 2019***  
+[Added Logo PR-#4](https://github.com/jfasanobc/testsite.test/pull/4) - Added a logo for testing with images and later css around images.  
 
+***July 7, 2019***  
+[Added Expanding Nav PR-5](https://github.com/jfasanobc/testsite.test/pull/5) - Added an expanding navigation from existing asset from another much older project. The animation/transitions are pure CSS.  
+[Made Nav Dynamic PR-6](https://github.com/jfasanobc/testsite.test/pull/6) - Made the UL and LI elements of the navigation dynamically loaded using ReactJS.  
+[Updated Readme PR-7](https://github.com/jfasanobc/testsite.test/pull/7) - Updated README.md with updated documentation and typing mistakes/markdown syntax errors.  
