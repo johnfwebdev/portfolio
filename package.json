@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --env=dev --mode development --open --host testsite.test",
+    "dev": "webpack-dev-server --env=dev --mode development --open",
     "start": "webpack --env=prod"
   },
   "author": "",
