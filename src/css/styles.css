@@ -1,9 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  font-size: 100%;
+  /* Set the font size 1em = ~16px */
+  font-family: Helvetica, Arial, Sans-Serif;
+  background-color: #3c3835;
+  /*background: url(../assets/backgrounds/dos.jpg) center center / cover fixed no-repeat;*/
+  position: relative;
+  height: 100%;
+}
+
+.grid {
+  max-width: 1920px;
+}
+
+/* Navigation */
+.expanding_nav {
+  height: 100%;
+  width: 4em;
+  background-color: #1C1917;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  transition: all 0.5s ease 0s;
+}
+
+.expanding_nav:hover {
+  width: 10em;
+  transition: all 0.5s ease 0s;
+}
+
+.nav {
+  list-style: none;
+  text-align: right;
+  width: 100%;
+  position: relative;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.menu_icon {
+  height: 2.5em;
+  width: 2.5em;
+  display: block;
+  margin: 0 auto;
+}
+
+.menu_item {
+  line-height: 3em;
+  width: 100%;
+}
+
+.menu_item:hover {
+  background-color: #38322E;
+}
+
+.menu_item a,
+.menu_item a:visited {
+  display: block;
+  /*opacity: 0;*/
+  color: #007FFF;
+  padding-right: .75em;
+  text-decoration: none;
+  /*transition: all 0.3s ease;*/
+}
+
+.menu_item:hover a {
+  border-right: #007FFF .25em solid;
+  padding-right: .5em;
+}
+
+
+.expanding_nav:hover .nav {
+  opacity: 100;
+  transition: all 0.3s ease;
+  transition-delay: 0.3s;
+  -webkit-transition-delay: 0.3s;
+}
+
+
+
+/* Content */
+.main {
+  margin: 0 0 0 4em;
+  padding: 0 1em;
+}
+
+.row {
+  max-width: 95%;
+  margin: 1em auto 1em auto;
+  color: rgb(224, 224, 224);
+  font-weight: 200;
+  padding: 0 1em;
+  display: block;
+  line-height: 2;
+  background-color: rgba(139, 140, 139, 0.6);
+}
+
+.content {
+  padding-bottom: 1em;
+  height: 30px;
+}
+
+header span {
+  float: right;
+}
+
 .main-body {
-    margin: 1rem;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px;
+  margin: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
 }
 
 .logo {
-    height: 100px;
+  height: 100px;
+  margin: 0 auto;
 }
