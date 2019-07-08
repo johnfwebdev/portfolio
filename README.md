@@ -56,4 +56,8 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
 [Added Expanding Nav PR-5](https://github.com/jfasanobc/testsite.test/pull/5) - Added an expanding navigation from existing asset from another much older project. The animation/transitions are pure CSS.  
 [Made Nav Dynamic PR-6](https://github.com/jfasanobc/testsite.test/pull/6) - Made the UL and LI elements of the navigation dynamically loaded using ReactJS.  
 [Updated Readme PR-7](https://github.com/jfasanobc/testsite.test/pull/7) - Updated README.md with updated documentation and typing mistakes/markdown syntax errors.  
+<<<<<<< HEAD
 [Added Jest Testing PR-9](https://github.com/jfasanobc/testsite.test/pull/9) - Added Jest testing to project with first initial test on the header component with snapshots included  
+=======
+[Added Jest Testing PR-8](https://github.com/jfasanobc/testsite.test/pull/8) - Added Jest testing to project with first initial test on the header component with snapshots included  
+>>>>>>> e473d555b27a18aa5ac95c3570b456687fcbbbe6
