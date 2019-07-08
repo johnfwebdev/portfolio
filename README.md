@@ -6,6 +6,12 @@ Description
 ====
 This project is to show off some of the lessons from setting up a proper environment using npm, react, webpack, docker, jest, and eventually other technologies. Using both production and development evironments with many of these technologies, as well as proper bundling for deployment to a live environment.  
 
+## Getting Started  
+Fork Repository  
+`git remote add upstream git@github.com:jfasanobc/portfolio.git`  
+`npm install`  
+`npm run dev`  
+
 
 ## File/Folder Structure
 ___/public___ - Is for building purposes and home of index.html  
