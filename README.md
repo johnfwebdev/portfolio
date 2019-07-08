@@ -4,7 +4,7 @@ A portfolio project with React, Webpack, Docker, and other things.
 
 Description
 ====
-This project is to show of some of the lessons from setting up a proper environment using npm, react, webpack, docker, and a handful of other technologies. Using both production and development evironments with many of these technologies, as well as proper bundling for deployment to a live environment.  
+This project is to show off some of the lessons from setting up a proper environment using npm, react, webpack, docker, jest, and eventually other technologies. Using both production and development evironments with many of these technologies, as well as proper bundling for deployment to a live environment.  
 
 
 ## File/Folder Structure
@@ -56,8 +56,4 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
 [Added Expanding Nav PR-5](https://github.com/jfasanobc/testsite.test/pull/5) - Added an expanding navigation from existing asset from another much older project. The animation/transitions are pure CSS.  
 [Made Nav Dynamic PR-6](https://github.com/jfasanobc/testsite.test/pull/6) - Made the UL and LI elements of the navigation dynamically loaded using ReactJS.  
 [Updated Readme PR-7](https://github.com/jfasanobc/testsite.test/pull/7) - Updated README.md with updated documentation and typing mistakes/markdown syntax errors.  
-<<<<<<< HEAD
 [Added Jest Testing PR-9](https://github.com/jfasanobc/testsite.test/pull/9) - Added Jest testing to project with first initial test on the header component with snapshots included  
-=======
-[Added Jest Testing PR-8](https://github.com/jfasanobc/testsite.test/pull/8) - Added Jest testing to project with first initial test on the header component with snapshots included  
->>>>>>> e473d555b27a18aa5ac95c3570b456687fcbbbe6
