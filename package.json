@@ -1,15 +1,25 @@
 {
-  "name": "testsite.test",
-  "version": "1.0.0",
-  "description": "",
+  "name": "portfolio",
+  "version": "1.0.1",
+  "description": "Portfolio Project",
+  "author": "John Fasano",
   "main": "index.js",
+  "license": "ISC",
+  "engines": {
+    "node": "8.15.0",
+    "npm": "6.4.1"
+  },
+  "os": [
+    "ubuntu",
+    "linux",
+    "windows",
+    "macOS"
+  ],
   "scripts": {
     "dev": "webpack-dev-server --env=dev --mode development --open",
     "start": "webpack --env=prod",
     "test": "jest --passWithNoTests"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
