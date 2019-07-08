@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render HeaderBlock Is it rendered and matching 1`] = `
+<div
+  className="grid"
+>
+  <div
+    className="expanding_nav"
+  >
+    <img
+      alt="Open Menu"
+      className="menu_icon center"
+      src="./assets/img/menu.png"
+    />
+    <ul
+      className="nav"
+    >
+      <li
+        className="menu_item"
+        title="Home"
+      >
+        <a
+          alt="Home"
+          href="#"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        className="menu_item"
+        title="About Me"
+      >
+        <a
+          alt="About Me"
+          href="#about-me"
+        >
+          About Me
+        </a>
+      </li>
+      <li
+        className="menu_item"
+        title="Contact Me"
+      >
+        <a
+          alt="Contact Me"
+          href="#contact-me"
+        >
+          Contact Me
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
