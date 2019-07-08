@@ -41,6 +41,8 @@ ___webpack.prod.___ - Production bundling rules
 ***npm run dev -- --host [hostname]***  
  - including a [hostname] will launch the Webpack dev server with the desired hostname in the browser  
  - Syntax: `npm run dev -- --host example.test`
+ - the inclusion of a hostname implys that your DNS is properly configured for that hostname and the top-level domain. Example, adding the following to your hosts file: `127.0.0.1 example.test`
+ - if you would like to control an entire top-level domain such as `.test` on your device, I'd recommend seeing this tutorial for DNSmasq [USE DNSMASQ INSTEAD OF /ETC/HOSTS](https://www.stevenrombauts.be/2018/01/use-dnsmasq-instead-of-etc-hosts/). This is heavyly geared toward macOS, but should work for most UNIX-like systems. Windows has alternatives.
 
 ***npm start***  
  - this will build using webpack and the bundle.js file will be in /public/dist
@@ -63,3 +65,6 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
 [Made Nav Dynamic PR-6](https://github.com/jfasanobc/testsite.test/pull/6) - Made the UL and LI elements of the navigation dynamically loaded using ReactJS.  
 [Updated Readme PR-7](https://github.com/jfasanobc/testsite.test/pull/7) - Updated README.md with updated documentation and typing mistakes/markdown syntax errors.  
 [Added Jest Testing PR-9](https://github.com/jfasanobc/testsite.test/pull/9) - Added Jest testing to project with first initial test on the header component with snapshots included  
+
+***July 8, 2019***  
+[Resolved Issue #10 PR-](https://github.com/jfasanobc/testsite.test/pull/9) - Clarified how to use --host flag with npm run dev CLI command in README.  
