@@ -67,4 +67,4 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
 [Added Jest Testing PR-9](https://github.com/jfasanobc/testsite.test/pull/9) - Added Jest testing to project with first initial test on the header component with snapshots included  
 
 ***July 8, 2019***  
-[Resolved Issue #10 PR-](https://github.com/jfasanobc/testsite.test/pull/9) - Clarified how to use --host flag with npm run dev CLI command in README.  
+[Resolved Issue #10 PR-11](https://github.com/jfasanobc/testsite.test/pull/11) - Clarified how to use --host flag with npm run dev CLI command in README.  
