@@ -1,0 +1,26 @@
+{
+  "name": "portfolio",
+  "version": "1.0.1",
+  "description": "Containing folder for client-server",
+  "scripts": {
+    "clientstart:dev": "cd client && npm run dev",
+    "clientstart:prod": "cd client && npm run build",
+    "clienttest": "cd client && npm test",
+    "dev": "concurrently --kill-others \"npm run clientstart:dev\"",
+    "build": "concurrently --kill-others \"npm run clientstart:prod\"",
+    "test": "concurrently --kill-others \"npm run clienttest\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfasanobc/portfolio.git"
+  },
+  "author": "John Fasano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jfasanobc/portfolio/issues"
+  },
+  "homepage": "https://github.com/jfasanobc/portfolio#readme",
+  "devDependencies": {
+    "concurrently": "^4.1.1"
+  }
+}
