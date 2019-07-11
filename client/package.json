@@ -17,8 +17,8 @@
   ],
   "scripts": {
     "dev": "webpack-dev-server --env=dev --mode development --open",
-    "start": "webpack --env=prod",
-    "test": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests",
+    "build": "jest ----passWithNoTests && webpack --env=prod"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
