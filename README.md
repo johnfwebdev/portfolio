@@ -35,10 +35,10 @@ ___webpack.prod.___ - Production bundling rules
 ## List of commands  
 ---------------------  
 ***npm run dev***  
- - this will launch the Webpack dev server with to localhost 3000  
+ - this will launch the Webpack dev server to localhost:3000  
  - the dev server has hot modules enabled and editing anything in /src will result in the page refreshing  
 
-***npm run dev -- --host [hostname]***  
+***npm run dev -- --host [hostname]***  (Temporarily Disabled)
  - including a [hostname] will launch the Webpack dev server with the desired hostname in the browser  
  - Syntax: `npm run dev -- --host example.test`
  - the inclusion of a hostname implys that your DNS is properly configured for that hostname and the top-level domain. Example, adding the following to your hosts file: `127.0.0.1 example.test`
@@ -68,3 +68,7 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
 
 ***July 8, 2019***  
 [Resolved Issue #10 PR-11](https://github.com/jfasanobc/testsite.test/pull/11) - Clarified how to use --host flag with npm run dev CLI command in README.  
+
+***July 11, 2019***  
+[Fixed Lodash Vulnerability PR-12](https://github.com/jfasanobc/portfolio/pull/12) - Repored vunerability used fixed version of lodas 4.17.14  
+[Restructure for Client/Server PR-13](https://github.com/jfasanobc/portfolio/pull/13) - Restructured folder and project, adding NPM commands that pass through to client and server  
