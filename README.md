@@ -32,8 +32,7 @@ ___webpack.dev.___ - Development bundling rules(webpack-dev-server)
 ___webpack.prod.___ - Production bundling rules  
 
 
-## List of commands  (Run within root folder)
----------------------  
+## List of commands  (Run within root folder)  
 ***npm run dev***  
  - This will launch the Webpack dev server to localhost:3000  
  - The dev server has hot modules enabled and editing anything in /src will result in the page refreshing  
