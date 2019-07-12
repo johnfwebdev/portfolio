@@ -71,5 +71,9 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
 [Resolved Issue #10 PR-11](https://github.com/jfasanobc/testsite.test/pull/11) - Clarified how to use --host flag with npm run dev CLI command in README.  
 
 ***July 11, 2019***  
-[Fixed Lodash Vulnerability PR-12](https://github.com/jfasanobc/portfolio/pull/12) - Repored vunerability used fixed version of lodas 4.17.14  
-[Restructure for Client/Server PR-13](https://github.com/jfasanobc/portfolio/pull/13) - Restructured folder and project, adding NPM commands that pass through to client and server  
+[Fixed Lodash Vulnerability PR-12](https://github.com/jfasanobc/portfolio/pull/12) - Repored vunerability used fixed version of lodas 4.17.14.  
+[Restructure for Client/Server PR-13](https://github.com/jfasanobc/portfolio/pull/13) - Restructured folder and project, adding NPM commands that pass through to client and server.  
+
+***July 12, 2019***  
+[Updated NPM Scripts for Client/Server PR-14](https://github.com/jfasanobc/portfolio/pull/14) - Fixed npm scripts to work from root directory.  
+[]() -   
