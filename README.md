@@ -32,21 +32,22 @@ ___webpack.dev.___ - Development bundling rules(webpack-dev-server)
 ___webpack.prod.___ - Production bundling rules  
 
 
-## List of commands  
+## List of commands  (Run within root folder)
 ---------------------  
 ***npm run dev***  
- - this will launch the Webpack dev server to localhost:3000  
- - the dev server has hot modules enabled and editing anything in /src will result in the page refreshing  
+ - This will launch the Webpack dev server to localhost:3000  
+ - The dev server has hot modules enabled and editing anything in /src will result in the page refreshing  
 
-***npm run dev -- --host [hostname]***  (Temporarily Disabled)
- - including a [hostname] will launch the Webpack dev server with the desired hostname in the browser  
+***NPMHOST=[example.test] npm run dev***  
+ - This is optional, example syntax: `NPMHOST=example.test npm run dev`
+ - Including a [hostname] will launch the Webpack dev server with the desired hostname in the browser  
  - Syntax: `npm run dev -- --host example.test`
- - the inclusion of a hostname implys that your DNS is properly configured for that hostname and the top-level domain. Example, adding the following to your hosts file: `127.0.0.1 example.test`
- - if you would like to control an entire top-level domain such as `.test` on your device, I'd recommend seeing this tutorial for DNSmasq [USE DNSMASQ INSTEAD OF /ETC/HOSTS](https://www.stevenrombauts.be/2018/01/use-dnsmasq-instead-of-etc-hosts/). This is heavyly geared toward macOS, but should work for most UNIX-like systems. Windows has alternatives.
+ - The inclusion of a hostname implys that your DNS is properly configured for that hostname and the top-level domain. Example, adding the following to your hosts file: `127.0.0.1 example.test`
+ - If you would like to control an entire top-level domain such as `.test` on your device, I'd recommend seeing this tutorial for DNSmasq [USE DNSMASQ INSTEAD OF /ETC/HOSTS](https://www.stevenrombauts.be/2018/01/use-dnsmasq-instead-of-etc-hosts/). This is heavyly geared toward macOS, but should work for most UNIX-like systems. Windows has alternatives.
 
 ***npm start***  
- - this will build using webpack and the bundle.js file will be in /public/dist
- - built from /src directory  
+ - This will build using webpack and the bundle.js file will be in /public/dist
+ - Built from /src directory  
 
  ***npm test***  
  - Runs Jest testing suites 
