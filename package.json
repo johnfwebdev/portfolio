@@ -24,6 +24,10 @@
   },
   "homepage": "https://github.com/jfasanobc/portfolio#readme",
   "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-react": "^7.0.0",
     "concurrently": "^4.1.1"
   }
 }

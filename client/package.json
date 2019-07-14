@@ -9,16 +9,10 @@
     "node": "8.15.0",
     "npm": "6.4.1"
   },
-  "os": [
-    "ubuntu",
-    "linux",
-    "windows",
-    "macOS"
-  ],
   "scripts": {
     "dev": "webpack-dev-server --env=dev --mode development --open",
-    "test": "jest --passWithNoTests",
-    "build": "jest ----passWithNoTests && webpack --env=prod"
+    "test": "jest",
+    "build": "jest --passWithNoTests && webpack --env=prod"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",

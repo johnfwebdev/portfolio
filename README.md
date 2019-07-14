@@ -75,4 +75,7 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
 
 ***July 12, 2019***  
 [Updated NPM Scripts for Client/Server PR-14](https://github.com/jfasanobc/portfolio/pull/14) - Fixed npm scripts to work from root directory.  
-[]() -   
+
+***July 14, 2019***
+[Included onClick + Test chores PR-15](https://github.com/jfasanobc/portfolio/pull/15) -   Included the ability for the seciton to switch for the nav item that is clicked and updated snapshots.  
+[]() -  
