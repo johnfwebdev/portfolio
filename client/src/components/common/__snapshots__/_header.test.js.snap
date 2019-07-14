@@ -22,6 +22,7 @@ exports[`Render HeaderBlock Is it rendered and matching 1`] = `
         <a
           alt="Home"
           href="#"
+          onClick={[Function]}
         >
           Home
         </a>
@@ -33,6 +34,7 @@ exports[`Render HeaderBlock Is it rendered and matching 1`] = `
         <a
           alt="About Me"
           href="#about-me"
+          onClick={[Function]}
         >
           About Me
         </a>
@@ -44,8 +46,21 @@ exports[`Render HeaderBlock Is it rendered and matching 1`] = `
         <a
           alt="Contact Me"
           href="#contact-me"
+          onClick={[Function]}
         >
           Contact Me
+        </a>
+      </li>
+      <li
+        className="menu_item"
+        title="Projects"
+      >
+        <a
+          alt="Projects"
+          href="#projects"
+          onClick={[Function]}
+        >
+          Projects
         </a>
       </li>
     </ul>
