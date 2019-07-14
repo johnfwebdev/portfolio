@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo appears on page as a link to root uri?  it has rendered and is a link to / 1`] = `
+<a
+  href="/"
+>
+  <img
+    className="logo"
+    src="./assets/img/logo.png"
+  />
+</a>
+`;
