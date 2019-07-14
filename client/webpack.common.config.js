@@ -9,11 +9,11 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        loader: "babel-loader", 
-        query:
-          {
-            presets:['@babel/preset-react']
-          }
+        loader: "babel-loader",
+        query: {
+          presets: ["@babel/preset-env", "@babel/preset-react"],
+          plugins: [["@babel/plugin-proposal-class-properties"]]
+        }
       },
       {
         test: /\.css$/,
@@ -28,6 +28,6 @@ module.exports = {
     filename: "bundle.js"
   },
   optimization: {
-    minimizer: [new UglifyJsPlugin()],
+    minimizer: [new UglifyJsPlugin()]
   }
 };
