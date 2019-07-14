@@ -17,9 +17,9 @@ body {
   height: 100%;
 }
 
-.grid {
+/*.grid {
   max-width: 1920px;
-}
+}*/
 
 /* Navigation */
 .expanding_nav {
@@ -95,18 +95,18 @@ body {
 
 .row {
   max-width: 95%;
-  margin: 1em auto 1em auto;
+  margin: 1em auto;
   color: rgb(224, 224, 224);
   font-weight: 200;
-  padding: 0 1em;
+  padding: 1em;
   display: block;
-  line-height: 2;
+  /*line-height: 2;*/
   background-color: rgba(139, 140, 139, 0.6);
 }
 
 .content {
   padding-bottom: 1em;
-  height: 30px;
+  /*height: 30px;*/
 }
 
 header span {
