@@ -6,12 +6,18 @@
     "clientstart:dev": "cd client; npm run dev -- --host $NPMHOST",
     "clientstart:prod": "cd client && npm run build",
     "clienttest": "cd client && npm test",
+    "clientinstall:dev": "cd client; npm install",
+    "clientinstall:prod": "cd client; npm install --production",
     "serverstart:dev": "",
     "serverstart:prod": "",
     "servertest": "",
-    "dev": "concurrently --kill-others \"npm run clientstart:dev\"",
-    "build": "concurrently --kill-others \"npm run clientstart:prod\"",
-    "test": "concurrently --kill-others \"npm run clienttest\""
+    "serverinstall:dev": "cd server; npm install",
+    "serverinstall:prod": "cd server; npm install --production",
+    "dev": "concurrently \"npm:clientstart:dev\"",
+    "build": "concurrently \"npm:clientstart:prod\"",
+    "test": "concurrently \"npm:clienttest\"",
+    "init:dev": "npm install; concurrently \"npm:clientinstall:dev\" \"npm:serverinstall:dev\"",
+    "init:prod": "npm install --production; concurrently \"npm:clientinstall:prod\" \"npm:serverinstall:prod\""
   },
   "repository": {
     "type": "git",
