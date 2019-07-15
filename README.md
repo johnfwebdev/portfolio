@@ -86,4 +86,5 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
 [Included onClick + Test chores PR-15](https://github.com/jfasanobc/portfolio/pull/15) -   Included the ability for the seciton to switch for the nav item that is clicked and updated snapshots.  
 
 ***July 15, 2019***  
+[Added npm install scripts + Readme instructions PR-16](https://github.com/jfasanobc/portfolio/pull/16) -  Added npm install scripts that will work from root directory for all directories.  
 []() -  
