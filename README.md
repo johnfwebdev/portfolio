@@ -87,4 +87,4 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
 
 ***July 15, 2019***  
 [Added npm install scripts + Readme instructions PR-16](https://github.com/jfasanobc/portfolio/pull/16) -  Added npm install scripts that will work from root directory for all directories.  
-[]() -  
+[Included Grunt Bump for versioning tools PR-17](https://github.com/jfasanobc/portfolio/pull/16) -  included Grunt Bump so there is a way to bump versions (patch, minor, major)
