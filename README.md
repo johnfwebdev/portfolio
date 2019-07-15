@@ -9,7 +9,7 @@ This project is to show off some of the lessons from setting up a proper environ
 ## Getting Started  
 Fork Repository  
 `git remote add upstream git@github.com:jfasanobc/portfolio.git`  
-`npm install`  
+`npm init:dev`  
 `npm run dev`  
 
 
@@ -33,20 +33,26 @@ ___webpack.prod.___ - Production bundling rules
 
 
 ## List of commands  (Run within root folder)  
+
+***npm init:dev***  
+ - This will run all npm installs needed for root folder and both client and server directories for local development setups  
+
+***npm init:prod***  
+ - This will run all npm installs needed for deployment in a production environment  
+
 ***npm run dev***  
  - This will launch the Webpack dev server to localhost:3000  
  - The dev server has hot modules enabled and editing anything in /src will result in the page refreshing  
 
 ***NPMHOST=[example.test] npm run dev***  
  - This is optional, example syntax: `NPMHOST=example.test npm run dev`
- - Including a [hostname] will launch the Webpack dev server with the desired hostname in the browser  
- - Syntax: `npm run dev -- --host example.test`
+ - Including a [hostname] will launch the Webpack dev server with the desired hostname in the browser if wanted.  
  - The inclusion of a hostname implys that your DNS is properly configured for that hostname and the top-level domain. Example, adding the following to your hosts file: `127.0.0.1 example.test`
  - If you would like to control an entire top-level domain such as `.test` on your device, I'd recommend seeing this tutorial for DNSmasq [USE DNSMASQ INSTEAD OF /ETC/HOSTS](https://www.stevenrombauts.be/2018/01/use-dnsmasq-instead-of-etc-hosts/). This is heavyly geared toward macOS, but should work for most UNIX-like systems. Windows has alternatives.
 
-***npm start***  
+***npm run build***  
  - This will build using webpack and the bundle.js file will be in /public/dist
- - Built from /src directory  
+ - Built from /src directory in both directories, client and server.
 
  ***npm test***  
  - Runs Jest testing suites 
@@ -76,6 +82,9 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
 ***July 12, 2019***  
 [Updated NPM Scripts for Client/Server PR-14](https://github.com/jfasanobc/portfolio/pull/14) - Fixed npm scripts to work from root directory.  
 
-***July 14, 2019***
+***July 14, 2019***  
 [Included onClick + Test chores PR-15](https://github.com/jfasanobc/portfolio/pull/15) -   Included the ability for the seciton to switch for the nav item that is clicked and updated snapshots.  
+
+***July 15, 2019***  
+[Added npm install scripts + Readme instructions PR-16](https://github.com/jfasanobc/portfolio/pull/16) -  Added npm install scripts that will work from root directory for all directories.  
 []() -  

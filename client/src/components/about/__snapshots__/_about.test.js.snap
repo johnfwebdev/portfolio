@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About head is rendered?  Is has rendered and matching snapshot 1`] = `
+<article>
+  <p>
+    Working towards improving myself, learning new technologies, and advancing my career.
+  </p>
+</article>
+`;
