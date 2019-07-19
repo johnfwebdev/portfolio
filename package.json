@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Containing folder for client-server",
   "scripts": {
     "clientstart:dev": "cd client; npm run dev -- --host $NPMHOST",
