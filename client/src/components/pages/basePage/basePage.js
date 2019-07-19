@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import HeaderBlock from '../common/header';
-import LogoItem from '../common/logo';
-import Section from '../section/section'
-import About from '../about/about'
+import React, { Component } from 'react'
+import HeaderBlock from '../../common/header/header'
+import LogoItem from '../../common/logo/logo'
+import Section from '../../common/sections/section'
 
 export default class BasePage extends Component {
 

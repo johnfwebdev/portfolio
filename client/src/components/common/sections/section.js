@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import About from '../about/about'
+import About from '../../pages/aboutPage/aboutPage'
 
 export default class Section extends Component {
   render() {
