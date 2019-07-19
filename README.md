@@ -90,4 +90,4 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
 [Included Grunt Bump for versioning tools PR-17](https://github.com/jfasanobc/portfolio/pull/17) -  included Grunt Bump so there is a way to bump versions (patch, minor, major)  
 
 ***July 19, 2019***  
-[Restructured Client Direcotry PR-19](https://github.com/jfasanobc/portfolio/pull/19) - Restructured Components files/folders and naming conventions for files/folders
+[Restructured Client Direcotry PR-20](https://github.com/jfasanobc/portfolio/pull/20) - Restructured Components files/folders and naming conventions for files/folders
