@@ -1,6 +1,6 @@
 import React from "react";
 import renderer, { create } from "react-test-renderer";
-import About from "./about";
+import About from "./aboutPage";
 
 describe("About head is rendered? ", () => {
   test("Is has rendered and matching snapshot", () => {
