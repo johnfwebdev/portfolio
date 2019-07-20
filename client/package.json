@@ -38,6 +38,7 @@
     "micromatch": "^4.0.2",
     "nodemon": "^1.19.1",
     "react-helmet": "^5.2.1",
+    "react-router-dom": "^5.0.1",
     "react-test-renderer": "^16.8.6",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.3",

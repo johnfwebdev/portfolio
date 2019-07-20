@@ -72,7 +72,7 @@ body {
   /*transition: all 0.3s ease;*/
 }
 
-.menu_item:hover a {
+.menu_item a:hover {
   border-right: #007FFF .25em solid;
   padding-right: .5em;
 }
