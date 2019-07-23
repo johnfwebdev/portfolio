@@ -1,69 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render HeaderBlock Is it rendered and matching 1`] = `
-<div
-  className="grid"
+<header
+  className="header row"
 >
-  <div
-    className="expanding_nav"
+  <a
+    href="/"
   >
     <img
-      alt="Open Menu"
-      className="menu_icon center"
-      src="./assets/img/menu.png"
+      className="logo"
+      src="./assets/img/logo.png"
     />
-    <ul
-      className="nav"
-    >
-      <li
-        className="menu_item"
-        title="Home"
-      >
-        <a
-          alt="Home"
-          href="#"
-          onClick={[Function]}
-        >
-          Home
-        </a>
-      </li>
-      <li
-        className="menu_item"
-        title="About Me"
-      >
-        <a
-          alt="About Me"
-          href="#about-me"
-          onClick={[Function]}
-        >
-          About Me
-        </a>
-      </li>
-      <li
-        className="menu_item"
-        title="Contact Me"
-      >
-        <a
-          alt="Contact Me"
-          href="#contact-me"
-          onClick={[Function]}
-        >
-          Contact Me
-        </a>
-      </li>
-      <li
-        className="menu_item"
-        title="Projects"
-      >
-        <a
-          alt="Projects"
-          href="#projects"
-          onClick={[Function]}
-        >
-          Projects
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
+  </a>
+  <p>
+    Suh Dude!
+    <span>
+      @JohnFasano
+    </span>
+  </p>
+</header>
 `;

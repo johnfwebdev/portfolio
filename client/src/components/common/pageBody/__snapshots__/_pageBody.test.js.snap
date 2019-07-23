@@ -20,11 +20,10 @@ exports[`Does the full index/base page load?  Loaded in comparison to snapshot 1
       >
         <li
           className="menu_item"
-          title="Home"
         >
           <a
-            alt="Home"
-            href="#"
+            className="nav-link"
+            href="/"
             onClick={[Function]}
           >
             Home
@@ -32,35 +31,32 @@ exports[`Does the full index/base page load?  Loaded in comparison to snapshot 1
         </li>
         <li
           className="menu_item"
-          title="About Me"
         >
           <a
-            alt="About Me"
-            href="#about-me"
+            className="nav-link"
+            href="/about"
             onClick={[Function]}
           >
-            About Me
+            About
           </a>
         </li>
         <li
           className="menu_item"
-          title="Contact Me"
         >
           <a
-            alt="Contact Me"
-            href="#contact-me"
+            className="nav-link"
+            href="/contact"
             onClick={[Function]}
           >
-            Contact Me
+            Contact
           </a>
         </li>
         <li
           className="menu_item"
-          title="Projects"
         >
           <a
-            alt="Projects"
-            href="#projects"
+            className="nav-link"
+            href="/projects"
             onClick={[Function]}
           >
             Projects
@@ -75,16 +71,6 @@ exports[`Does the full index/base page load?  Loaded in comparison to snapshot 1
     <header
       className="header row"
     >
-      <p>
-        Suh Dude!
-        <span>
-          @JohnFasano
-        </span>
-      </p>
-    </header>
-    <section
-      className="content row"
-    >
       <a
         href="/"
       >
@@ -94,9 +80,26 @@ exports[`Does the full index/base page load?  Loaded in comparison to snapshot 1
         />
       </a>
       <p>
-        This is the base content block.
+        Suh Dude!
+        <span>
+          @JohnFasano
+        </span>
       </p>
-    </section>
+    </header>
+    <article
+      className="section row"
+    >
+      <p>
+        Index
+      </p>
+    </article>
+    <footer
+      className="footer row"
+    >
+      <p>
+        Footer
+      </p>
+    </footer>
   </div>
 </div>
 `;
