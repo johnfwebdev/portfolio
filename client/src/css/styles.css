@@ -123,3 +123,43 @@ header span {
   height: 100px;
   margin: 0 auto;
 }
+
+.contact-form {
+  margin: 2em auto;
+}
+
+.form-item {
+  padding: .25em;
+}
+
+.form-field {
+  margin: 0 .25em;
+  min-width: 200px;
+  min-height: 2.5em;
+  padding: .5em;
+  border: 1px solid #eee;
+  background-color: #3c3835;
+  border-left: 3px solid;
+  border-radius: 5px;
+  color: #eee;
+  transition: border-color 1s ease-out;
+}
+
+.form-field:invalid, .invalid{
+  border-left-color: salmon;
+}
+
+.form-field:valid, .valid {
+  border-left-color: palegreen;
+}
+
+.message {
+  height: 5em;
+}
+
+label {
+  display: block;
+  height: 100%;
+  float: left;
+  width: 5em;
+}

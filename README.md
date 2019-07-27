@@ -94,3 +94,10 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
 
 ***July 20, 2019***  
 [Changed to React-Router PR-21](https://github.com/jfasanobc/portfolio/pull/21) - Made the navigation menu using react-router
+
+***July 27, 2019***  
+[Added Contact Form and Express Server POST route PR-22](https://github.com/jfasanobc/portfolio/pull/22)  
+ - Contact HTML/React Components  
+ - Placeholders for future validation needs on frontend  
+ - Backend Node and Express for /contact-form POST  
+ - Sequel INSERT for message data table.  
