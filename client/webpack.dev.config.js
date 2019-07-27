@@ -8,10 +8,8 @@ module.exports = merge(webpackBaseConfig, {
   mode: "development",
   devServer: {
     contentBase: path.join(__dirname, "public/"),
-    publicPath: "/dist/"
+    publicPath: "/dist/",
+    historyApiFallback: true
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin()
-  ]
-})
+  plugins: [new webpack.HotModuleReplacementPlugin(), new CleanWebpackPlugin()]
+});
