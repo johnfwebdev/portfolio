@@ -1,11 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const db = require("../../mysql_connect")
+const db = require("../../lib/mysql_connect")
 
 module.exports.form = (data) => {
-
-  db.connection(data)
-
+  db.message(data)
   return JSON.stringify(data)
 }
