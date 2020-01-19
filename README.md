@@ -100,4 +100,7 @@ Revolve around essential setup and functionality, npm, react, docker, webpack, e
  - Contact HTML/React Components  
  - Placeholders for future validation needs on frontend  
  - Backend Node and Express for /contact-form POST  
- - Sequel INSERT for message data table.  
+ - Sequel INSERT for message data table.
+
+ ***January 18, 2020***
+ [Fixed basic login modal functionality PR-](https://github.com/jfasanobc/portfolio/pull/27) - Included a login modal with registration form.
