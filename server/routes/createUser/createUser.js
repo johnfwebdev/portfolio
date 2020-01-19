@@ -11,7 +11,12 @@ module.exports.saveUser = (name, email, password) => {
     if (err) {
       console.log(err)
     }
-    db.saveUser(name, email, hash)
+    try {
+      db.saveUser(name, email, hash)
+    }
+    catch (e){
+      throw console.log(e)
+    }
     console.log(`Password Token Created: ${hash}`)
   })
   console.log("User Created")

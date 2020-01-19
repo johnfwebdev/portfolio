@@ -17,12 +17,14 @@ router.use(session({
     host: 'localhost', 
     port: 6379, 
     client: client, 
-    ttl: 60*60*1 
+    ttl: 60*60 
   }),
   duration: 1000,
   activeDuration: 1000,
   saveUninitialized: false,
   cookie: {
+    secure: false,
+    httpOnly: false,
     maxAge: 60
   }
 }))
@@ -30,27 +32,44 @@ router.use(session({
 router.all("*", (req, res, next) => {
   if (!req.session) {
     res.redirect('/')
+    console.log("Route:: router.all (35)", "Session False")
   }
-  console.log('All route hit')
+  console.log("Route:: router.all (37)", "Done")
   next()
 })
 
 //Log In Route
-router.post("/login", (req, res) => {
-  //console.log(req.body.userEmail)
+router.post("/login", async (req, res) => {
   const saltRounds = 10
-  if (checkUserPassword.comparePasswordTokens(req.body.userEmail, req.body.userPassword)) {
-    req.session.key = bcrypt.hash(req.body.userEmail, saltRounds, (err, hash) => {
-      if (err) {
-        console.log(err)
-      }
-      console.log(hash)
+
+  console.log(typeof req.body.userPassword, typeof req.body.userEmail)
+
+  const checkPassword = () => {
+    return new Promise((resolve, reject) => {
+      let item = checkUserPassword.comparePasswordTokens(req.body.userEmail, req.body.userPassword)
+      resolve(item)
     })
-    res.sendStatus(200)
-    return true
   }
-  res.sendStatus(403)
-  console.log(req.session)
+
+  checkPassword()
+    .then((result) => {
+      console.log(result, "53")
+      if (result) {
+        // req.session.key = bcrypt.hash(JSON.stringify(req.body.userEmail), saltRounds, (err, hash) => {
+        //   if (err) {
+        //     console.log("Route:: router.post(/login) (48)", err)
+        //   }
+        //   console.log("Route:: router.post(/login) (50)", hash)
+        // })
+        req.session.save
+        res.sendStatus(200)
+      } else {
+        res.sendStatus(403)
+      }
+    })
+    .catch((reject) => {
+      console.log("Route:: router.post(/login) (54) Failed DB PW Grab", reject)
+    })
 })
 
 //Log Out Route
@@ -63,7 +82,7 @@ router.post("/create-user", (req, res) => {
   console.log(req.body)
   try {
     createUser.saveUser(req.body.userName, req.body.userEmail, req.body.userPassword)
-    res.send(JSON.stringify({ user_created: true }))
+    res.json({ user_created: true })
   }
   catch (err) {
     throw err

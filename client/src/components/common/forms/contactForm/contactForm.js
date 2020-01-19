@@ -14,10 +14,9 @@ export default class ContactForm extends Component {
   state = initialState
 
   handleFormSubmit = (event) => {
-    // console.log(JSON.stringify({email:this.state.email,name:this.state.name}));
     event.preventDefault();
     
-    fetch("http://localhost:5001/contact-form", {
+    fetch("http://localhost:5001/contact_form", {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.email,
@@ -25,21 +24,14 @@ export default class ContactForm extends Component {
         message: this.state.message
       }),
       headers: { 
-        "content-type": "application/json",
-        "allow-control-allow-origin": "localhost"
+        "content-type": "application/json"
       }
-    }).finally(() => {
-      console.log('Form Data Sent')
-      this.setState(initialState);
     })
-
-    let form = document.getElementsByClassName("contact-form");
-    form[0].reset();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-      // console.log(this.state.email)
-      // console.log(this.state.emailValid)
+      .finally(() => {
+        console.log('Form Data Sent')
+        this.setState(initialState);
+      })
+      .catch(error => console.error(error))
   }
 
   handleChangeName = (event) => {
