@@ -1,34 +1,7 @@
 import React, { Component } from "react"
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
-/*const navItems = [
-  {
-    name: "Home",
-    link: "#",
-    alt: "Home",
-    value: "base"
-  },
-  {
-    name: "About Me",
-    link: "#about-me",
-    alt: "About Me",
-    value: "about"
-  },
-  {
-    name: "Contact Me",
-    link: "#contact-me",
-    alt: "Contact Me",
-    value: "contact"
-  },
-  {
-    name: "Projects",
-    link: "#projects",
-    alt: "Projects",
-    value: "projects"
-  }
-];*/
-
-export default class HeaderBlock extends Component {
+export default class Navigation extends Component {
   render() {
     return (
       <div className="grid">
@@ -49,16 +22,27 @@ export default class HeaderBlock extends Component {
                 About
               </Link>
             </li>
-            <li className="menu_item">
-              <Link to="/contact" className="nav-link">
-                Contact
-              </Link>
-            </li>
-            <li className="menu_item">
-              <Link to="/projects" className="nav-link">
-                Projects
-              </Link>
-            </li>
+            {this.props.loggedIn && 
+              <li className="menu_item">
+                <Link to="/contact" className="nav-link">
+                  Contact
+                </Link>
+              </li>
+            }
+            {this.props.loggedIn &&
+              <li className="menu_item">
+                <Link to="/projects" className="nav-link">
+                  Projects
+                </Link>
+              </li>
+            }
+            {this.props.loggedIn &&
+              <li className="menu_item">
+              <a className="nav-link" onClick={this.props.logoutUser}>
+                  Log Out
+              </a>
+              </li>
+            }
           </ul>
         </div>
       </div>
