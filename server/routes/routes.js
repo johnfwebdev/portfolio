@@ -3,43 +3,38 @@ const router = express.Router()
 const contactForm = require('./contactForm/contactForm')
 const createUser = require('./createUser/createUser')
 const checkUserPassword = require('../lib/checkUserPassword')
-const session = require('express-session')
-const redis = require('redis')
-const redisStore = require('connect-redis')(session)
-const client = redis.createClient()
 const bcrypt = require('bcrypt')
 
-router.use(session({
-  name: 'session-id',
-  secret: 'john',
-  resave: false,
-  store: new redisStore({ 
-    host: 'localhost', 
-    port: 6379, 
-    client: client, 
-    ttl: 60*60 
-  }),
-  duration: 1000,
-  activeDuration: 1000,
-  saveUninitialized: false,
-  cookie: {
-    secure: false,
-    httpOnly: false,
-    maxAge: 60
+router.post("/session", (req, res) => {
+  console.log(req.session.cookie)
+  console.log(req.sessionID)
+  console.log(req.body.userName)
+  console.log(req.body.loggedIn)
+  if (err) {
+    console.error(err);
+    res.status(500).json({
+      error: 'Internal error please try again'
+    })
   }
-}))
 
-router.all("*", (req, res, next) => {
-  if (!req.session) {
-    res.redirect('/')
-    console.log("Route:: router.all (35)", "Session False")
+  if (req.session.username) {
+    res.status(200)
   }
-  console.log("Route:: router.all (37)", "Done")
-  next()
+
+  if (!req.session.username) {
+    req.session.username = 'tobi'
+    console.log(req.session.username)
+  }
+
+  res.json({
+      loggedIn: true,
+      user: req.session.username,
+      sessionID: req.sessionID
+  })
 })
 
 //Log In Route
-router.post("/login", async (req, res) => {
+router.post("/login", (req, res) => {
   const saltRounds = 10
 
   console.log(typeof req.body.userPassword, typeof req.body.userEmail)
@@ -99,8 +94,8 @@ router.post("/contact_form", (req, res) => {
 });
 
 //Allows refresh for the React App for react-router without resulting in a
-router.get("/*", (req, res) => {
-  res.send("/index.html")
-})
+// router.get("*", (req, res) => {
+//   res.send("/index.html")
+// })
 
 module.exports = router

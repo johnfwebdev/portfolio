@@ -17,6 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/jfasanobc/portfolio.git"
   },
+  "proxy": "http://localhost:5001",
   "devDependencies": {
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.4",

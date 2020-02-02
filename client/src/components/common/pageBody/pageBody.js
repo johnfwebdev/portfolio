@@ -11,28 +11,67 @@ const initialState = {
   userEmail: null,
   userPassword: null,
   userName: null,
-  registerUserForm: false
+  registerUserForm: false,
+  session: false
 }
 
 export default class BasePage extends Component {
+  constructor() {
+    super()
+  }
+
+  componentDidMount() {
+    this.checkSession()
+  }
+
+  componentDidUpdate() {
+  }
+
   state = initialState
 
   LoginName = (event) => {
-    this.setState({userName: event})
+    this.setState({ userName: event })
   }
 
   LoginEmail = (event) => {
-    this.setState({userEmail: event})
+    this.setState({ userEmail: event })
   }
 
   LoginPassword = (event) => {
-    this.setState({userPassword: event})
+    this.setState({ userPassword: event })
+  }
+
+  checkSession = () => {
+    fetch('/api/session', {
+      method: 'POST',
+      body: JSON.stringify(this.state.loggedIn, this.state.userName),
+      headers: {
+        "content-type": "application/json",
+        "credentials": "include",
+        "accepts": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(res => {
+        console.log(res)
+        if (res.status === 200) {
+          this.setState({
+            loggedIn: res.loggedIn
+          });
+        }
+      // })(data) => {
+      //   console.log(data)
+      //   this.setState(stateChange => ({
+      //     loggedIn: data.loggedIn
+      //   }))
+      // })
+      })
   }
 
   LogIn = (e) => {
     e.preventDefault()
     console.log(this.state.userPassword)
-    fetch('http://localhost:5001/login', {
+    fetch('/login', {
       method: 'POST',
       body: JSON.stringify({
         userEmail: this.state.userEmail,
@@ -40,7 +79,7 @@ export default class BasePage extends Component {
       }),
       headers: {
         "content-type": "application/json",
-        "credentials": "include"
+        "credentials": "include",
       }
     })
       .then((response) => {
@@ -54,20 +93,18 @@ export default class BasePage extends Component {
         }
       })
       .catch(error => console.error(error))
-
-    
   }
 
   RegisterUserFormToggle = (e) => {
     e.preventDefault()
     this.setState(prevState => ({
-        registerUserForm: !prevState.registerUserForm
+      registerUserForm: !prevState.registerUserForm
     }))
   }
 
   CreateUser = (e) => {
     if (this.state.registerUserForm) {
-      fetch('http://localhost:5001/create-user', {
+      fetch('/create-user', {
         method: 'POST',
         body: JSON.stringify({
           userName: this.state.userName,
@@ -95,10 +132,10 @@ export default class BasePage extends Component {
   }
 
   render() {
-    return ( 
+    return (
       <div className="grid">
-        {!this.state.loggedIn ? 
-          <LoginModal 
+        {!this.state.loggedIn ?
+          <LoginModal
             UserName={this.LoginName}
             UserEmail={this.LoginEmail}
             UserPassword={this.LoginPassword}
@@ -107,7 +144,7 @@ export default class BasePage extends Component {
             ToggleRegister={this.RegisterUserFormToggle}
             LoggedIn={this.state.loggedIn}
             RegisterUserForm={this.state.registerUserForm}
-            /> : ''}
+          /> : ''}
         <Router>
           <Navigation
             loggedIn={this.state.loggedIn}
