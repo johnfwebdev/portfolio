@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
-import Navigation from '../navigation/navigation'
-import { BrowserRouter as Router } from "react-router-dom";
-import Header from '../header/header'
-import Section from '../section/section'
-import Footer from '../footer/footer'
-import LoginModal from '../loginModal/loginModal'
+import React, { Component } from "react"
+import Navigation from "../navigation/navigation"
+import { BrowserRouter as Router } from "react-router-dom"
+import Header from "../header/header"
+import Section from "../section/section"
+import Footer from "../footer/footer"
+import LoginModal from "../loginModal/loginModal"
+import regeneratorRuntime from "regenerator-runtime"
 
 const initialState = {
   loggedIn: false,
@@ -12,19 +13,21 @@ const initialState = {
   userPassword: null,
   userName: null,
   registerUserForm: false,
-  session: false
+  sessionActive: false,
+  sessionID: null,
+  fullPageLoad: null
 }
 
 export default class BasePage extends Component {
   constructor() {
     super()
+
+    this.checkSession = this.checkSession.bind(this)
   }
 
   componentDidMount() {
     this.checkSession()
-  }
-
-  componentDidUpdate() {
+    console.log("lifecycle " + this.state.loggedIn)
   }
 
   state = initialState
@@ -41,47 +44,57 @@ export default class BasePage extends Component {
     this.setState({ userPassword: event })
   }
 
-  checkSession = () => {
-    fetch('/api/session', {
-      method: 'POST',
-      body: JSON.stringify(this.state.loggedIn, this.state.userName),
+  async checkSession() {
+    fetch("/api/session", {
+      method: "POST",
+      body: JSON.stringify({
+        loggedIn: this.state.loggedIn,
+        userEmail: this.state.userEmail,
+        sessionID: this.state.sessionID
+      }),
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
         "credentials": "include",
         "accepts": "application/json"
       }
     })
       .then(response => response.json())
-      .then(res => {
-        console.log(res)
-        if (res.status === 200) {
-          this.setState({
-            loggedIn: res.loggedIn
-          });
+      .then(data => {
+        console.log("logged in? " + data.loggedIn)
+
+        this.setState(() => ({
+          sessionActive: data.sessionActive,
+          sessionID: data.sessionID
+        }))
+
+        if (data.loggedIn === true) {
+          console.log(data.loggedIn)
+          this.setState(() => ({
+            sessionActive: data.sessionActive,
+            sessionID: data.sessionID,
+            loggedIn: data.loggedIn
+          }))
         }
-      // })(data) => {
-      //   console.log(data)
-      //   this.setState(stateChange => ({
-      //     loggedIn: data.loggedIn
-      //   }))
-      // })
+
+        console.log("logged in now? " + data.loggedIn)
       })
   }
 
   LogIn = (e) => {
     e.preventDefault()
     console.log(this.state.userPassword)
-    fetch('/login', {
-      method: 'POST',
+    fetch("/api/login", {
+      method: "POST",
       body: JSON.stringify({
         userEmail: this.state.userEmail,
         userPassword: this.state.userPassword
       }),
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
         "credentials": "include",
       }
     })
+      // .then(res => res.json())
       .then((response) => {
         if (response.status === 200) {
           console.log(response.status, "here")
@@ -89,7 +102,7 @@ export default class BasePage extends Component {
             loggedIn: !prevState.loggedIn
           }))
         } else {
-          console.log('nope')
+          console.log("nope")
         }
       })
       .catch(error => console.error(error))
@@ -103,33 +116,53 @@ export default class BasePage extends Component {
   }
 
   CreateUser = (e) => {
+    e.preventDefault()
     if (this.state.registerUserForm) {
-      fetch('/create-user', {
-        method: 'POST',
+      fetch("/api/create-user", {
+        method: "POST",
         body: JSON.stringify({
-          userName: this.state.userName,
           userEmail: this.state.userEmail,
           userPassword: this.state.userPassword
         }),
         headers: {
-          "content-type": "application/json"
+          "Content-Type": "application/json",
+          "credentials": "include"
         }
       })
         .then(response => response.json())
-        .catch(error => console.error(error))
-
-      this.setState(prevState => ({
-        loggedIn: !prevState.loggedIn
-      }))
+        .then(data => {
+          console.log(data.loggedIn)
+          if (data.loggedIn === true) {
+            this.setState(() => ({
+              loggedIn: data.loggedIn,
+              userEmail: data.userEmail
+            }))
+          }
+        })
+      this.checkSession()
     }
   }
 
   logoutCurrentUser = (e) => {
-    this.setState(prevState => ({
-      loggedIn: !prevState.loggedIn,
-      registerUserForm: !prevState.registerUserForm
-    }))
-  }
+    fetch("/api/logout", {
+      method: "POST",
+      body: JSON.stringify({
+        loggedIn: this.state.loggedIn,
+        userEmail: this.state.userEmail,
+        sessionID: this.state.sessionID
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "credentials": "include",
+        "accepts": "application/json"
+      }
+    })
+      .then(response => response.json())
+        this.setState(prevState => ({
+          loggedIn: !prevState.loggedIn,
+          registerUserForm: false
+        }))
+      }
 
   render() {
     return (
@@ -144,7 +177,7 @@ export default class BasePage extends Component {
             ToggleRegister={this.RegisterUserFormToggle}
             LoggedIn={this.state.loggedIn}
             RegisterUserForm={this.state.registerUserForm}
-          /> : ''}
+          /> : ""}
         <Router>
           <Navigation
             loggedIn={this.state.loggedIn}
@@ -153,11 +186,11 @@ export default class BasePage extends Component {
           />
           <div className="main">
             <Header />
-            {this.state.loggedIn ? <Section /> : ''}
+            {this.state.loggedIn ? <Section /> : ""}
             <Footer />
           </div>
         </Router>
       </div>
-    );
+    )
   }
 }

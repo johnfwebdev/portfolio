@@ -9,6 +9,7 @@ const session = require('express-session')
 const redis = require('redis')
 const redisStore = require('connect-redis')(session)
 const client = redis.createClient()
+const genuuid = require('uuid/v4')
 
 const port = (process.env.PORT || 5001)
 
@@ -21,8 +22,14 @@ app.options('*', cors({
 //Body Parsers for requests
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+if (process.env.ENVIRONMENT === 'production') {
+  app.set('trust proxy', 1)
+}
 
 app.use(session({
+  genid: () => {
+    return genuuid()
+  },
   name: 'session-id',
   secret: 'john',
   store: new redisStore({
@@ -33,13 +40,22 @@ app.use(session({
   }),
   duration: 1000,
   activeDuration: 1000,
-  saveUninitialized: false,
+  saveUninitialized: true,
   resave: false,
   cookie: {
-    secure: true,
+    secure: false,
     maxAge: 60 * 2 * 1000
   }
 }))
+
+app.use((req, res, next) => {
+  if (!req.session.userEmail || !req.session.sessionID) {
+    req.session.userEmail = req.body.userEmail
+    req.session.sessionID = req.sessionID
+    console.log("Set email and sessionID " + req.session.userEmail + ' ' + req.session.sessionID)
+  }
+  next()
+})
 
 //Routes
 app.use("/", routes)

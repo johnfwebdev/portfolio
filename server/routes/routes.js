@@ -3,41 +3,33 @@ const router = express.Router()
 const contactForm = require('./contactForm/contactForm')
 const createUser = require('./createUser/createUser')
 const checkUserPassword = require('../lib/checkUserPassword')
+const session = require('express-session')
 const bcrypt = require('bcrypt')
 
 router.post("/session", (req, res) => {
-  console.log(req.session.cookie)
-  console.log(req.sessionID)
-  console.log(req.body.userName)
-  console.log(req.body.loggedIn)
-  if (err) {
-    console.error(err);
-    res.status(500).json({
-      error: 'Internal error please try again'
+  if (!req.session.userEmail || !req.sessionID) {
+    console.log("No session, created session " + req.sessionID)
+    res.status(201)
+    res.json({
+      sessionID: req.sessionID,
+      sessionActive: true
     })
   }
 
-  if (req.session.username) {
+  if (req.sessionID && req.session.userEmail) {
     res.status(200)
+    console.log("Session found and userEmail Present " + req.sessionID)
+    res.json({
+      sessionID: req.sessionID,
+      sessionActive: true,
+      loggedIn: true
+    })
   }
-
-  if (!req.session.username) {
-    req.session.username = 'tobi'
-    console.log(req.session.username)
-  }
-
-  res.json({
-      loggedIn: true,
-      user: req.session.username,
-      sessionID: req.sessionID
-  })
 })
 
 //Log In Route
 router.post("/login", (req, res) => {
   const saltRounds = 10
-
-  console.log(typeof req.body.userPassword, typeof req.body.userEmail)
 
   const checkPassword = () => {
     return new Promise((resolve, reject) => {
@@ -56,7 +48,6 @@ router.post("/login", (req, res) => {
         //   }
         //   console.log("Route:: router.post(/login) (50)", hash)
         // })
-        req.session.save
         res.sendStatus(200)
       } else {
         res.sendStatus(403)
@@ -69,26 +60,27 @@ router.post("/login", (req, res) => {
 
 //Log Out Route
 router.post("/logout", (req, res) => {
-  res.send(JSON.stringify({ "Logged Out": true }))
+  req.session.destroy(() => {
+    res.json({ "Logged Out": true })
+  })
 })
 
 //Create User
 router.post("/create-user", (req, res) => {
-  console.log(req.body)
-  try {
-    createUser.saveUser(req.body.userName, req.body.userEmail, req.body.userPassword)
-    res.json({ user_created: true })
-  }
-  catch (err) {
-    throw err
-  }
-});
+  createUser.saveUser(req.body.userName, req.body.userEmail, req.body.userPassword)
+  res.json({ 
+    user_created: true,
+    loggedIn: true,
+    userEmail: req.session.userEmail
+  })
+})
 
 //Contact Form
 router.post("/contact_form", (req, res) => {
-  // console.log(req.headers)
-  // console.log(req.body)
-  console.log("Form Entry")
+  if (!req.session.userEmail || !req.session.sessionID) {
+    req.session.userEmail = req.body.userEmail
+    req.session.sessionID = req.body.session
+  }
   res.header("Access-Control-Allow-Origin", "http://localhost:8080")
   res.send(contactForm.form(req.body))
 });
