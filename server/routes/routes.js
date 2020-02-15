@@ -60,6 +60,7 @@ router.post("/login", (req, res) => {
 
 //Log Out Route
 router.post("/logout", (req, res) => {
+  //Destroy session
   req.session.destroy(() => {
     res.json({ "Logged Out": true })
   })

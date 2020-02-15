@@ -13,15 +13,16 @@ const genuuid = require('uuid/v4')
 
 const port = (process.env.PORT || 5001)
 
-//Cors preflight to all routes
+//CORS preflight settings to all routes
 app.options('*', cors({
   origin: 'http://localhost:8080',
   credentials: true
 }))
 
-//Body Parsers for requests
+//Parsers for requests
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
 if (process.env.ENVIRONMENT === 'production') {
   app.set('trust proxy', 1)
 }
@@ -44,7 +45,7 @@ app.use(session({
   resave: false,
   cookie: {
     secure: false,
-    maxAge: 60 * 2 * 1000
+    maxAge: 60 * 5 * 1000 //5 minutes
   }
 }))
 

@@ -5,7 +5,7 @@ import Header from "../header/header"
 import Section from "../section/section"
 import Footer from "../footer/footer"
 import LoginModal from "../loginModal/loginModal"
-import regeneratorRuntime from "regenerator-runtime"
+// import regeneratorRuntime from "regenerator-runtime"
 
 const initialState = {
   loggedIn: false,
@@ -15,7 +15,7 @@ const initialState = {
   registerUserForm: false,
   sessionActive: false,
   sessionID: null,
-  fullPageLoad: null
+  fullPageLoad: false
 }
 
 export default class BasePage extends Component {
@@ -25,12 +25,14 @@ export default class BasePage extends Component {
     this.checkSession = this.checkSession.bind(this)
   }
 
+  state = initialState
+
   componentDidMount() {
+    
     this.checkSession()
-    console.log("lifecycle " + this.state.loggedIn)
+    
   }
 
-  state = initialState
 
   LoginName = (event) => {
     this.setState({ userName: event })
@@ -44,27 +46,28 @@ export default class BasePage extends Component {
     this.setState({ userPassword: event })
   }
 
-  async checkSession() {
+  checkSession() {
+    //POST to session backend
     fetch("/api/session", {
       method: "POST",
       body: JSON.stringify({
-        loggedIn: this.state.loggedIn,
-        userEmail: this.state.userEmail,
-        sessionID: this.state.sessionID
-      }),
+        userEmail: this.state.userEmail,  //Email and session id provided if available.
+        sessionID: this.state.sessionID   //Used to determine if a new session or existing
+      }),                                 // session will be used/needed
       headers: {
         "Content-Type": "application/json",
         "credentials": "include",
         "accepts": "application/json"
       }
     })
-      .then(response => response.json())
+      .then(response => response.json()) //Parse JSON
       .then(data => {
-        console.log("logged in? " + data.loggedIn)
-
+        //Set state for session data
+        //Set state for page loading indicator
         this.setState(() => ({
           sessionActive: data.sessionActive,
-          sessionID: data.sessionID
+          sessionID: data.sessionID,
+          fullPageLoad: true
         }))
 
         if (data.loggedIn === true) {
@@ -161,36 +164,42 @@ export default class BasePage extends Component {
         this.setState(prevState => ({
           loggedIn: !prevState.loggedIn,
           registerUserForm: false
-        }))
-      }
+      }))
+  }
 
   render() {
-    return (
-      <div className="grid">
-        {!this.state.loggedIn ?
-          <LoginModal
-            UserName={this.LoginName}
-            UserEmail={this.LoginEmail}
-            UserPassword={this.LoginPassword}
-            LogIn={this.LogIn}
-            RegisterUser={this.CreateUser}
-            ToggleRegister={this.RegisterUserFormToggle}
-            LoggedIn={this.state.loggedIn}
-            RegisterUserForm={this.state.registerUserForm}
-          /> : ""}
-        <Router>
-          <Navigation
-            loggedIn={this.state.loggedIn}
-            logoutUser={this.logoutCurrentUser}
-            LogIn={this.LogIn}
-          />
-          <div className="main">
-            <Header />
-            {this.state.loggedIn ? <Section /> : ""}
-            <Footer />
-          </div>
-        </Router>
-      </div>
-    )
+    if (this.state.fullPageLoad === false) {
+      return(
+        <div>Loading ...</div>
+      )
+    } else {
+      return (
+        <div className="grid">
+          {!this.state.loggedIn ?
+            <LoginModal
+              UserName={this.LoginName}
+              UserEmail={this.LoginEmail}
+              UserPassword={this.LoginPassword}
+              LogIn={this.LogIn}
+              RegisterUser={this.CreateUser}
+              ToggleRegister={this.RegisterUserFormToggle}
+              LoggedIn={this.state.loggedIn}
+              RegisterUserForm={this.state.registerUserForm}
+            /> : ""}
+          <Router>
+            <Navigation
+              loggedIn={this.state.loggedIn}
+              logoutUser={this.logoutCurrentUser}
+              LogIn={this.LogIn}
+            />
+            <div className="main">
+              <Header />
+              {this.state.loggedIn ? <Section /> : ""}
+              <Footer />
+            </div>
+          </Router>
+        </div>
+      )
+    }
   }
 }
