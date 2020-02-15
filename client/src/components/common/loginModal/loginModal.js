@@ -1,9 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import io from 'socket.io-client'
-import Oauth from '../oauth/oauth'
-
-// const socket = io('localhost:5001')//API_URL)
-// const providers = ['github']
 
 export default class LoginModal extends Component {
 
