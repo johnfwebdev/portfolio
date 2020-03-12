@@ -9,7 +9,7 @@ const session = require('express-session')
 const redis = require('redis')
 const redisStore = require('connect-redis')(session)
 const client = redis.createClient()
-const genuuid = require('uuid/v4')
+const { v4: genuuid } = require('uuid')
 
 const port = (process.env.PORT || 5001)
 
