@@ -87,8 +87,8 @@ router.post("/contact_form", (req, res) => {
 })
 
 //Allows refresh for the React App for react-router without resulting in a
-router.get("/*", (req, res) => {
-  res.sendFile("/client/public/index.html"), function (err) {
+router.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "index.html")), function (err) {
     if (err) {
       res.status(500).send(err)
     }
