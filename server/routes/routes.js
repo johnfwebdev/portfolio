@@ -5,7 +5,6 @@ const createUser = require('./createUser/createUser')
 const checkUserPassword = require('../lib/checkUserPassword')
 const session = require('express-session')
 const bcrypt = require('bcrypt')
-const bcrypt = require("")
 
 router.post("/session", (req, res) => {
   if (!req.session.userEmail || !req.sessionID) {
@@ -88,7 +87,7 @@ router.post("/contact_form", (req, res) => {
 })
 
 //Allows refresh for the React App for react-router without resulting in a
-router.get("*", (req, res) => {
+router.get("/*", (req, res) => {
   res.sendFile("/client/public/index.html"), function (err) {
     if (err) {
       res.status(500).send(err)
