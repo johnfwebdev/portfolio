@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class Navigation extends Component {
   render() {
@@ -38,9 +38,9 @@ export default class Navigation extends Component {
             }
             {this.props.loggedIn &&
               <li className="menu_item">
-              <a className="nav-link" onClick={this.props.logoutUser}>
+                <a className="nav-link" onClick={this.props.logoutUser}>
                   Log Out
-              </a>
+                </a>
               </li>
             }
           </ul>

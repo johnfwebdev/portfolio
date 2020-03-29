@@ -33,7 +33,6 @@ export default class BasePage extends Component {
     
   }
 
-
   LoginName = (event) => {
     this.setState({ userName: event })
   }
@@ -194,7 +193,7 @@ export default class BasePage extends Component {
             />
             <div className="main">
               <Header />
-              {this.state.loggedIn ? <Section /> : ""}
+                {this.state.loggedIn ? <Section /> : ""}
               <Footer />
             </div>
           </Router>
