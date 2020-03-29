@@ -23,9 +23,9 @@ module.exports.getUserPassword = (email, userToken) => {
   const sql = `SELECT userToken FROM users WHERE email = '${email}'`;
   return connect_db.query(sql, (err, result) => {
     if (process.env.CONSOLE_LOGGING === true) {
-      console.log(result)
+      console.log("Query Log: " + result)
     }
-    
+
     return bcrypt.compare(userToken, result[0].userToken, (err, res) => {
       return res
     })
