@@ -86,9 +86,9 @@ router.post("/contact_form", (req, res) => {
   res.send(contactForm.form(req.body))
 })
 
-//Allows refresh for the React App for react-router without resulting in a
+//Allows refresh for the React App for react-router without resulting in a 404
 router.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "index.html")), function (err) {
+  res.send(path.resolve(__dirname, "index.html")), function (err) {
     if (err) {
       res.status(500).send(err)
     }
