@@ -84,11 +84,15 @@ router.post("/contact_form", (req, res) => {
   }
   res.header("Access-Control-Allow-Origin", "http://localhost:8080")
   res.send(contactForm.form(req.body))
-});
+})
 
 //Allows refresh for the React App for react-router without resulting in a
-// router.get("*", (req, res) => {
-//   res.send("/index.html")
-// })
+router.get("*", (req, res) => {
+  res.sendFile("index.html"), function (err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
 
 module.exports = router
