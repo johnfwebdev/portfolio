@@ -5,7 +5,6 @@ const createUser = require('./createUser/createUser')
 const checkUserPassword = require('../lib/checkUserPassword')
 const session = require('express-session')
 const bcrypt = require('bcrypt')
-const bcrypt = require("")
 
 router.post("/session", (req, res) => {
   if (!req.session.userEmail || !req.sessionID) {
