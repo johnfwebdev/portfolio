@@ -6,9 +6,9 @@ const bcrypt = require('bcrypt')
 let connect_db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
-    //password: process.env.DB_PASS,
-    database: process.env.DB_DB,
-    socketPath: process.env.DB_SOCKET
+    password: process.env.DB_PASS,
+    database: process.env.DB_DB
+    //socketPath: process.env.DB_SOCKET
 })
 
 module.exports.saveUser = (user, email, passwordToken) => {
