@@ -68,12 +68,29 @@ router.post("/logout", (req, res) => {
 
 //Create User
 router.post("/create-user", (req, res) => {
-  createUser.saveUser(req.body.userName, req.body.userEmail, req.body.userPassword)
-  res.json({ 
-    user_created: true,
-    loggedIn: true,
-    userEmail: req.session.userEmail
-  })
+
+  const saltRounds = 10
+
+  const createPassword = () => {
+    return new Promise((resolve, reject) => {
+      let item = createUser.saveUser(req.body.userName, req.body.userEmail, req.body.userPassword)
+      resolve(item)
+    })
+  }
+
+  createPassword()
+    .then((result) => {
+      if (result) {
+        res.status(201).json({
+          user_created: true,
+          loggedIn: true,
+          userEmail: req.session.userEmail
+        })
+      } else {
+        res.sendStatus(400)
+      }
+    })
+  
 })
 
 //Contact Form
