@@ -37,7 +37,7 @@ app.use(session({
     host: 'localhost',
     port: 6379,
     client: client,
-    ttl: 60 * 5 * 1000
+    ttl: process.env.SESSION_TIME
   }),
   duration: 1000,
   activeDuration: 1000,
@@ -45,7 +45,7 @@ app.use(session({
   resave: false,
   cookie: {
     secure: false,
-    maxAge: 60 * 5 * 1000 //5 minutes
+    maxAge: process.env.COOKIE_TIME
   }
 }))
 
