@@ -24,11 +24,19 @@ module.exports.saveUser = (user, email, passwordToken) => {
 module.exports.getUserPassword = (email, userToken) => {
   const sql = `SELECT userToken FROM users WHERE email = '${email}'`;
   return connect_db.query(sql, (err, result) => {
-    if (process.env.CONSOLE_LOGGING === true) {
+    if (err) {
+      console.log('ERROR: mysql_connect: connect_db.query: ' + err)
+    }
+
+    if (process.env.CONSOLE_LOGGING === 'enabled') {
       console.log("Query Log: " + result)
     }
 
     return bcrypt.compare(userToken, result[0].userToken, (err, res) => {
+      if (err) {
+        console.log('ERROR: mysql_connect: getUserPassword.connect_db.query.bcrypt.compare: ' + err)
+      }
+      console.log(res)
       return res
     })
   })

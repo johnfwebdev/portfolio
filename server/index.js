@@ -45,7 +45,7 @@ app.use(session({
   resave: false,
   cookie: {
     secure: false,
-    maxAge: 60 * 5 * 1000 //5 minutes
+    maxAge: process.env.COOKIE_TIME
   }
 }))
 
