@@ -37,7 +37,7 @@ app.use(session({
     host: 'localhost',
     port: 6379,
     client: client,
-    ttl: 60 * 5 * 1000
+    ttl: process.env.SESSION_TIME
   }),
   duration: 1000,
   activeDuration: 1000,
